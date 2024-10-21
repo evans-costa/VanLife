@@ -13,13 +13,11 @@ export default tseslint.config(
     extends: [
       js.configs.recommended,
       ...tseslint.configs.recommendedTypeChecked,
-      // jsxA11y.flatConfigs.recommended,
       eslintConfigPrettier,
     ],
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
       ecmaVersion: 2020,
-      // ...jsxA11y.flatConfigs.recommended.languageOptions,
       globals: globals.browser,
       parserOptions: {
         projectService: true,
