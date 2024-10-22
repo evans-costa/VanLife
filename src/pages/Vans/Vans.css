@@ -1,0 +1,22 @@
+.vans-section {
+  padding-inline: 27px;
+
+  margin-bottom: 82px;
+}
+
+.vans-section-title {
+  margin-top: 54px;
+
+  text-align: left;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.vans-list {
+  margin-top: 56px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  gap: 33px;
+}

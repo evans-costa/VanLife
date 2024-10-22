@@ -1,8 +1,9 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import About from "./pages/About";
+import Home from "./pages/Home/Home";
+import About from "./pages/About/About";
 import Navbar from "./components/Navbar";
+import Vans from "./pages/Vans/Vans";
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
       </header>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="about" element={<About />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/vans" element={<Vans />} />
       </Routes>
       <footer>©️ 2022 #VANLIFE</footer>
     </BrowserRouter>
