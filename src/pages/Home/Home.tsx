@@ -1,4 +1,5 @@
-import "./index.css";
+import { Link } from "react-router-dom";
+import "./Home.css";
 
 export default function Home() {
   return (
@@ -11,7 +12,9 @@ export default function Home() {
           Add adventure to your life by joining the #vanlife movement. Rent the
           perfect van to make your perfect road trip.
         </p>
-        <button className="hero-button">Find your van</button>
+        <Link to="/vans" className="hero-button">
+          Find your van
+        </Link>
       </div>
     </div>
   );

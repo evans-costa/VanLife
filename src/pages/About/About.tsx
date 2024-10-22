@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import aboutBackground from "../../assets/about-background.png";
-import "./index.css";
+import "./About.css";
 
 export default function About() {
   return (
@@ -22,7 +23,9 @@ export default function About() {
             Your destination is waiting. <br />
             Your van is ready.
           </h3>
-          <button className="about-explore-button">Explore our vans</button>
+          <Link to="/vans" className="about-explore-button">
+            Explore our vans
+          </Link>
         </div>
       </div>
     </section>
