@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Van } from "../../types/api-responses";
 import "./VanDetail.css";
+import { ArrowLeft } from "../../ui/ArrowLeft";
 
 export default function VanDetail() {
   const { id } = useParams();
@@ -26,7 +27,10 @@ export default function VanDetail() {
   return (
     <div className="van-detail-container">
       <Link to="/vans" className="van-return-link">
-        Back to all vans
+        <span>
+          <ArrowLeft />
+          Back to all vans
+        </span>
       </Link>
       {van && (
         <section className="van-detail-section">

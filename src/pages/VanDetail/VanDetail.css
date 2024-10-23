@@ -3,6 +3,12 @@
   text-align: start;
 }
 
+.van-return-link > span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .van-detail-section {
   display: flex;
   flex-direction: column;
