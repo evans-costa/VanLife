@@ -44,8 +44,23 @@
   margin-top: 12px;
   border-radius: 5px;
 
-  background-color: #e17654;
   color: #ffead0;
   font-size: 16px;
   font-weight: 600;
+}
+
+.van-card-type::first-letter {
+  text-transform: capitalize;
+}
+
+.van-card-type.simple {
+  background-color: #e17654;
+}
+
+.van-card-type.rugged {
+  background-color: #115e59;
+}
+
+.van-card-type.luxury {
+  background-color: #161616;
 }

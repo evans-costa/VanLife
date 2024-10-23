@@ -70,8 +70,8 @@ export const handlers = [
   http.get("/api/vans/:id", ({ params }) => {
     const { id } = params;
 
-    const filteredVans = vans.filter((van) => van.id === id);
+    const van = vans.filter((van) => van.id === id);
 
-    return HttpResponse.json({ vans: filteredVans });
+    return HttpResponse.json(van[0]);
   }),
 ];

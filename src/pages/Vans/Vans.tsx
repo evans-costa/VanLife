@@ -1,22 +1,11 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import CardVan from "../../components/CardVan";
+import { Van, VansApiResponse } from "../../types/api-responses";
 import "./Vans.css";
 
-interface VansApiResponse {
-  vans: Vans[];
-}
-
-interface Vans {
-  id: string;
-  name: string;
-  price: number;
-  description: string;
-  imageUrl: string;
-  type: string;
-}
-
 export default function Vans() {
-  const [vans, setVans] = useState<Vans[]>([]);
+  const [vans, setVans] = useState<Van[]>([]);
 
   useEffect(() => {
     async function fetchVans() {
@@ -35,13 +24,14 @@ export default function Vans() {
       <h2 className="vans-section-title">Explore our van options</h2>
       <div className="vans-list">
         {vans.map((van) => (
-          <CardVan
-            key={van.id}
-            imgUrl={van.imageUrl}
-            name={van.name}
-            price={van.price}
-            type={van.type}
-          />
+          <Link to={`/vans/${van.id}`} key={van.id}>
+            <CardVan
+              imgUrl={van.imageUrl}
+              name={van.name}
+              price={van.price}
+              type={van.type}
+            />
+          </Link>
         ))}
       </div>
     </section>

@@ -1,0 +1,67 @@
+.van-detail-container {
+  padding: 40px 26px 82px;
+  text-align: start;
+}
+
+.van-detail-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.van-detail-section > img {
+  border-radius: 5px;
+  max-width: 100%;
+
+  margin-top: 40px;
+}
+
+.van-detail-info {
+  margin-top: 50px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.van-card-type {
+  display: inline-block;
+}
+
+.van-detail-title {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.van-detail-price {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.van-detail-price > span {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.van-detail-description {
+  font-size: 16px;
+  font-weight: 500;
+
+  text-wrap-style: stable;
+}
+
+.van-detail-button {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px 0;
+
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+
+  background-color: #ff8c38;
+  border: none;
+  border-radius: 5px;
+}

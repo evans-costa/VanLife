@@ -4,6 +4,7 @@ import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import Navbar from "./components/Navbar";
 import Vans from "./pages/Vans/Vans";
+import VanDetail from "./pages/VanDetail/VanDetail";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/vans" element={<Vans />} />
+        <Route path="/vans/:id" element={<VanDetail />} />
       </Routes>
       <footer>©️ 2022 #VANLIFE</footer>
     </BrowserRouter>
