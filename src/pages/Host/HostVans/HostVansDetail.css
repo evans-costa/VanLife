@@ -1,0 +1,67 @@
+.host-van-detail-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 26px;
+
+  margin: 37px 0;
+  padding: 25px;
+  background-color: #fff;
+  border-radius: 6px;
+}
+
+.host-van-detail-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.host-van-detail-info > img {
+  width: 160px;
+  border-radius: 5px;
+}
+
+.host-van-detail-info > div {
+  text-align: start;
+}
+
+.van-card-type {
+  margin: 0;
+  padding: 4px 10px;
+  font-size: 13px;
+}
+
+.host-van-detail-name {
+  margin-top: 20px;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.host-van-detail-price {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.host-van-detail-price > span {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.host-van-detail-more {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+
+  font-weight: bold;
+  text-align: start;
+}
+
+.host-van-detail-more * span {
+  font-weight: 400;
+}
+
+.more-category {
+  text-transform: capitalize;
+}
