@@ -1,0 +1,10 @@
+.nav-host {
+  display: flex;
+  gap: 30px;
+  padding: 36px 26px;
+}
+
+.nav-host {
+  font-size: 18px;
+  font-weight: 500;
+}
