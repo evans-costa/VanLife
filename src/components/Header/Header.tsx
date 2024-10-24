@@ -10,19 +10,19 @@ export default function Header() {
       <nav className="nav-links">
         <NavLink
           className={({ isActive }) => (isActive ? "active-link" : "")}
-          to="/host"
+          to="host"
         >
           Host
         </NavLink>
         <NavLink
           className={({ isActive }) => (isActive ? "active-link" : "")}
-          to="/about"
+          to="about"
         >
           About
         </NavLink>
         <NavLink
           className={({ isActive }) => (isActive ? "active-link" : "")}
-          to="/vans"
+          to="vans"
         >
           Vans
         </NavLink>
