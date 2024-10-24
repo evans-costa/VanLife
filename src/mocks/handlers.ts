@@ -10,6 +10,7 @@ const vans = [
     imageUrl:
       "https://assets.scrimba.com/advanced-react/react-router/modest-explorer.png",
     type: "simple",
+    hostId: "123",
   },
   {
     id: "2",
@@ -20,6 +21,7 @@ const vans = [
     imageUrl:
       "https://assets.scrimba.com/advanced-react/react-router/beach-bum.png",
     type: "rugged",
+    hostId: "123",
   },
   {
     id: "3",
@@ -30,6 +32,7 @@ const vans = [
     imageUrl:
       "https://assets.scrimba.com/advanced-react/react-router/reliable-red.png",
     type: "luxury",
+    hostId: "123",
   },
   {
     id: "4",
@@ -40,6 +43,7 @@ const vans = [
     imageUrl:
       "https://assets.scrimba.com/advanced-react/react-router/dreamfinder.png",
     type: "simple",
+    hostId: "123",
   },
   {
     id: "5",
@@ -50,6 +54,7 @@ const vans = [
     imageUrl:
       "https://assets.scrimba.com/advanced-react/react-router/the-cruiser.png",
     type: "luxury",
+    hostId: "123",
   },
   {
     id: "6",
@@ -60,6 +65,7 @@ const vans = [
     imageUrl:
       "https://assets.scrimba.com/advanced-react/react-router/green-wonder.png",
     type: "rugged",
+    hostId: "123",
   },
 ];
 
@@ -71,6 +77,19 @@ export const handlers = [
     const { id } = params;
 
     const van = vans.filter((van) => van.id === id);
+
+    return HttpResponse.json(van[0]);
+  }),
+  http.get("/api/host/vans", () => {
+    const hostVans = vans.filter((host) => host.hostId === "123");
+
+    return HttpResponse.json({ vans: hostVans });
+  }),
+  http.get("/api/host/vans/:id", ({ params }) => {
+    const { id } = params;
+
+    const hostVan = vans.filter((host) => host.hostId === "123");
+    const van = hostVan.filter((van) => van.id === id);
 
     return HttpResponse.json(van[0]);
   }),
