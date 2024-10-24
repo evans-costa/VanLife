@@ -1,11 +1,12 @@
 import "./HostVansDetail.css";
 import { useEffect, useState } from "react";
-import { Van } from "../../../types/api-responses";
-import { Link, NavLink, useParams } from "react-router-dom";
-import { ArrowLeft } from "../../../ui/ArrowLeft";
+import { Van } from "../../../../types/api-responses";
+import { Link, NavLink, Outlet, useParams } from "react-router-dom";
+import { ArrowLeft } from "../../../../ui/ArrowLeft";
+import { ContextType } from "../../../../hooks/useVan";
 
-export default function VansHostDetail() {
-  const [van, setVan] = useState<Van>();
+export default function HostVansDetail() {
+  const [van, setVan] = useState<Van | null>(null);
   const { id } = useParams();
 
   useEffect(() => {
@@ -26,7 +27,7 @@ export default function VansHostDetail() {
 
   return (
     <section>
-      <Link to="/host/vans" className="van-return-link">
+      <Link relative="path" to=".." className="van-return-link">
         <span>
           <ArrowLeft />
           Back to all vans
@@ -49,37 +50,25 @@ export default function VansHostDetail() {
           <nav className="nav-links">
             <NavLink
               className={({ isActive }) => (isActive ? "active-link" : "")}
-              to={`/host/vans/${van.id}`}
+              to="."
+              end
             >
               Details
             </NavLink>
             <NavLink
               className={({ isActive }) => (isActive ? "active-link" : "")}
-              to={`/host/vans/${van.id}/pricing`}
+              to="pricing"
             >
               Pricing
             </NavLink>
             <NavLink
               className={({ isActive }) => (isActive ? "active-link" : "")}
-              to={`/host/vans/${van.id}/photos`}
+              to="photos"
             >
               Photos
             </NavLink>
           </nav>
-          <div className="host-van-detail-more">
-            <p className="more-name">
-              Name: <span>{van.name}</span>
-            </p>
-            <p className="more-category">
-              Category: <span>{van.type}</span>
-            </p>
-            <p className="more-description">
-              Description: <span>{van.description}</span>
-            </p>
-            <p className="more-visibility">
-              Visibility: <span>Public</span>
-            </p>
-          </div>
+          <Outlet context={{ van } satisfies ContextType} />
         </div>
       )}
     </section>
