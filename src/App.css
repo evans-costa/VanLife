@@ -13,6 +13,17 @@ header {
   padding: 36px 26px;
 }
 
+section {
+  margin-top: 40px;
+  padding-inline: 27px;
+}
+
+.van-return-link > span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .nav-links {
   display: flex;
   gap: 24px;
@@ -22,16 +33,16 @@ header {
   color: #4d4d4d;
 }
 
-.nav-links > a {
+nav > a {
   text-decoration: none;
   color: #4d4d4d;
 }
 
-.nav-links > a:hover,
-.nav-links > a:active,
-.van-return-link:active,
+nav > a:hover,
+a.active-link,
 .van-return-link:hover {
   color: #161616;
+  font-weight: bold;
   text-decoration: underline;
 }
 

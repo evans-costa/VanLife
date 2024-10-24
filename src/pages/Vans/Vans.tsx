@@ -11,6 +11,10 @@ export default function Vans() {
     async function fetchVans() {
       const response = await fetch("/api/vans");
 
+      if (!response.ok) {
+        throw new Error("Error while fetching vans");
+      }
+
       const data = (await response.json()) as VansApiResponse;
 
       setVans(data.vans);

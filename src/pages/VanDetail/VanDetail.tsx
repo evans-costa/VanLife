@@ -25,7 +25,7 @@ export default function VanDetail() {
   }, [id]);
 
   return (
-    <div className="van-detail-container">
+    <section>
       <Link to="/vans" className="van-return-link">
         <span>
           <ArrowLeft />
@@ -33,7 +33,7 @@ export default function VanDetail() {
         </span>
       </Link>
       {van && (
-        <section className="van-detail-section">
+        <div className="van-detail-section">
           <img src={van.imageUrl} alt={van.description} />
           <div className="van-detail-info">
             <div className={`van-card-type ${van.type}`}>{van.type}</div>
@@ -47,8 +47,8 @@ export default function VanDetail() {
           <Link to="" className="van-detail-button">
             Rent this van
           </Link>
-        </section>
+        </div>
       )}
-    </div>
+    </section>
   );
 }
