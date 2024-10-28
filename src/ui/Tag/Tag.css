@@ -1,0 +1,15 @@
+.van-card-type::first-letter {
+  text-transform: capitalize;
+}
+
+.van-card-type.simple {
+  background-color: #e17654;
+}
+
+.van-card-type.rugged {
+  background-color: #115e59;
+}
+
+.van-card-type.luxury {
+  background-color: #161616;
+}
