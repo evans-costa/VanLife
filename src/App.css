@@ -33,35 +33,6 @@ section {
   color: #4d4d4d;
 }
 
-nav > a {
-  text-decoration: none;
-  color: #4d4d4d;
-}
-
-nav > a:hover,
-a.active-link,
-.van-return-link:hover {
-  color: #161616;
-  font-weight: bold;
-  text-decoration: underline;
-}
-
-.van-card-type::first-letter {
-  text-transform: capitalize;
-}
-
-.van-card-type.simple {
-  background-color: #e17654;
-}
-
-.van-card-type.rugged {
-  background-color: #115e59;
-}
-
-.van-card-type.luxury {
-  background-color: #161616;
-}
-
 footer {
   padding: 26px 0;
   background-color: #252525;

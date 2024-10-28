@@ -1,3 +1,4 @@
+import Tag from "../../ui/Tag/Tag";
 import "./CardVan.css";
 
 interface IProps {
@@ -14,7 +15,7 @@ export default function CardVan({ imgUrl, name, price, type }: IProps) {
       <div className="van-card-content">
         <div className="van-card-info">
           <h3 className="van-card-title">{name}</h3>
-          <div className={`van-card-type ${type}`}>{type}</div>
+          <Tag type={type} />
         </div>
         <p className="van-card-price">
           ${price}

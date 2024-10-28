@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import CardVan from "../../components/CardVan/CardVan";
 import { Van, VansApiResponse } from "../../types/api-responses";
 import "./Vans.css";
 
 export default function Vans() {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [vans, setVans] = useState<Van[]>([]);
+
+  const typeFilter = searchParams.get("type");
+  console.log(typeFilter);
 
   useEffect(() => {
     async function fetchVans() {

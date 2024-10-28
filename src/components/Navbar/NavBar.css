@@ -1,0 +1,26 @@
+.nav-bar {
+  display: flex;
+  gap: 30px;
+  font-size: 16px;
+
+  font-weight: 500;
+}
+
+.nav-bar.dashboard {
+  margin-top: 32px;
+  font-size: 18px;
+  padding-inline: 27px;
+}
+
+nav > a {
+  text-decoration: none;
+  text-transform: capitalize;
+  color: #4d4d4d;
+}
+
+nav > a:hover,
+a.active-link {
+  color: #161616;
+  font-weight: bold;
+  text-decoration: underline;
+}

@@ -4,8 +4,39 @@ import { Van } from "../../../../types/api-responses";
 import { Link, NavLink, Outlet, useParams } from "react-router-dom";
 import { ArrowLeft } from "../../../../ui/ArrowLeft";
 import { ContextType } from "../../../../hooks/useVan";
+import Tag from "../../../../ui/Tag/Tag";
+import NavBar from "../../../../components/Navbar/NavBar";
+
+const navLinks = [
+  {
+    id: 1,
+    name: "Details",
+    path: ".",
+  },
+  {
+    id: 2,
+    name: "Pricing",
+    path: "pricing",
+  },
+  {
+    id: 3,
+    name: "Photos",
+    path: "photos",
+  },
+];
 
 export default function HostVansDetail() {
+  const navElements = navLinks.map((item) => (
+    <NavLink
+      key={item.id}
+      className={({ isActive }) => (isActive ? "active-link" : "")}
+      end={item.path === "."}
+      to={item.path}
+    >
+      {item.name}
+    </NavLink>
+  ));
+
   const [van, setVan] = useState<Van | null>(null);
   const { id } = useParams();
 
@@ -39,7 +70,7 @@ export default function HostVansDetail() {
           <div className="host-van-detail-info">
             <img src={van.imageUrl} alt={van.description} />
             <div>
-              <div className={`van-card-type ${van.type}`}>{van.type}</div>
+              <Tag type={van.type} />
               <h2 className="host-van-detail-name">{van.name}</h2>
               <p className="host-van-detail-price">
                 ${van.price}
@@ -47,27 +78,7 @@ export default function HostVansDetail() {
               </p>
             </div>
           </div>
-          <nav className="nav-links">
-            <NavLink
-              className={({ isActive }) => (isActive ? "active-link" : "")}
-              to="."
-              end
-            >
-              Details
-            </NavLink>
-            <NavLink
-              className={({ isActive }) => (isActive ? "active-link" : "")}
-              to="pricing"
-            >
-              Pricing
-            </NavLink>
-            <NavLink
-              className={({ isActive }) => (isActive ? "active-link" : "")}
-              to="photos"
-            >
-              Photos
-            </NavLink>
-          </nav>
+          <NavBar>{navElements}</NavBar>
           <Outlet context={{ van } satisfies ContextType} />
         </div>
       )}

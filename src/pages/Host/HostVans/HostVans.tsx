@@ -1,7 +1,7 @@
 import "./HostVan.css";
 import { useEffect, useState } from "react";
 import { Van, VansApiResponse } from "../../../types/api-responses";
-import { Link } from "react-router-dom";
+import HostCardVan from "../../../components/HostCardVan/HostCardVan";
 
 export default function VansHost() {
   const [hostVans, setHostVans] = useState<Van[]>([]);
@@ -28,23 +28,7 @@ export default function VansHost() {
       <div className="host-vans-list">
         {hostVans.length > 0 ? (
           hostVans.map((hostVan) => (
-            <Link
-              className="host-van-link-wrapper"
-              to={`${hostVan.id}`}
-              key={hostVan.id}
-            >
-              <div className="host-van-card">
-                <img
-                  className="host-van-image"
-                  src={hostVan.imageUrl}
-                  alt={hostVan.description}
-                />
-                <div className="host-van-info">
-                  <h2 className="host-van-name">{hostVan.name}</h2>
-                  <h3 className="host-van-price">${hostVan.price}/day</h3>
-                </div>
-              </div>
-            </Link>
+            <HostCardVan key={hostVan.id} {...hostVan} />
           ))
         ) : (
           <p>Loading...</p>
