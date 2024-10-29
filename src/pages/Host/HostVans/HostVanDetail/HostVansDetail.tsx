@@ -70,7 +70,7 @@ export default function HostVansDetail() {
           <div className="host-van-detail-info">
             <img src={van.imageUrl} alt={van.description} />
             <div>
-              <Tag type={van.type} />
+              <Tag type={van.type}>{van.type}</Tag>
               <h2 className="host-van-detail-name">{van.name}</h2>
               <p className="host-van-detail-price">
                 ${van.price}
