@@ -4,7 +4,7 @@ import { Van } from "../../types/api-responses";
 
 export default function HostCardVan({ ...van }: Van) {
   return (
-    <Link className="host-van-link-wrapper" to={`${van.id}`}>
+    <Link className="host-van-link-wrapper" to={van.id}>
       <div className="host-van-card">
         <img
           className="host-van-image"

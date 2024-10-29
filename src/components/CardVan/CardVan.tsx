@@ -15,7 +15,7 @@ export default function CardVan({ imgUrl, name, price, type }: IProps) {
       <div className="van-card-content">
         <div className="van-card-info">
           <h3 className="van-card-title">{name}</h3>
-          <Tag type={type} />
+          <Tag type={type}>{type}</Tag>
         </div>
         <p className="van-card-price">
           ${price}

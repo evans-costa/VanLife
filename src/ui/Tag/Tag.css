@@ -2,14 +2,29 @@
   text-transform: capitalize;
 }
 
+.van-card-type {
+  align-self: self-start;
+  padding: 8px 16px;
+  border-radius: 5px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  background-color: #ffead0;
+  color: #4d4d4d;
+}
+
 .van-card-type.simple {
   background-color: #e17654;
+  color: #ffead0;
 }
 
 .van-card-type.rugged {
   background-color: #115e59;
+  color: #ffead0;
 }
 
 .van-card-type.luxury {
   background-color: #161616;
+  color: #ffead0;
 }
