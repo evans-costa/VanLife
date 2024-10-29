@@ -18,3 +18,55 @@
   justify-items: center;
   gap: 33px;
 }
+
+.van-list-filter-buttons {
+  margin-top: 22px;
+
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.filter-button {
+  align-self: self-start;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 5px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  background-color: #ffead0;
+  color: #4d4d4d;
+  transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.filter-button.simple.selected,
+.filter-button.simple:hover {
+  background-color: #e17654;
+  color: #ffead0;
+}
+
+.filter-button.rugged.selected,
+.filter-button.rugged:hover {
+  background-color: #115e59;
+  color: #ffead0;
+}
+
+.filter-button.luxury.selected,
+.filter-button.luxury:hover {
+  background-color: #161616;
+  color: #ffead0;
+}
+
+.clear-filters {
+  margin-right: 20px;
+  margin-left: auto;
+
+  font-size: 16px;
+  font-weight: 500;
+  color: #4d4d4d;
+  border: none;
+  background-color: transparent;
+  text-decoration: underline;
+}

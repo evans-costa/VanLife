@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { Van } from "../../types/api-responses";
 import "./VanDetail.css";
 import { ArrowLeft } from "../../ui/ArrowLeft";
+import Tag from "../../ui/Tag/Tag";
 
 export default function VanDetail() {
   const { id } = useParams();
+  const location = useLocation();
   const [van, setVan] = useState<Van>();
 
   useEffect(() => {
@@ -24,19 +26,25 @@ export default function VanDetail() {
     void fetchVan();
   }, [id]);
 
+  const locationState = location.state as { search: string; type: string };
+
   return (
     <section>
-      <Link to="/vans" className="van-return-link">
+      <Link
+        relative="path"
+        to={`..${locationState.search}`}
+        className="van-return-link"
+      >
         <span>
           <ArrowLeft />
-          Back to all vans
+          {`Back to ${locationState.type ?? "all"} vans`}
         </span>
       </Link>
       {van && (
         <div className="van-detail-section">
           <img src={van.imageUrl} alt={van.description} />
           <div className="van-detail-info">
-            <div className={`van-card-type ${van.type}`}>{van.type}</div>
+            <Tag type={van.type}>{van.type}</Tag>
             <h3 className="van-detail-title">{van.name}</h3>
             <p className="van-detail-price">
               ${van.price}
