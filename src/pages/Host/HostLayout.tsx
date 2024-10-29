@@ -1,4 +1,3 @@
-import "./Dashboard.css";
 import NavBar from "../../components/Navbar/NavBar";
 import { NavLink, Outlet } from "react-router-dom";
 
