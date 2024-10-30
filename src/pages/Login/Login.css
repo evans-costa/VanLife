@@ -1,0 +1,79 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.login-title {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form > input {
+  padding: 12px 13px;
+  border: 1px solid #d1d5db;
+
+  outline-color: #ff8b3870;
+}
+
+.login-form > input::placeholder {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #4d4d4d;
+}
+
+.login-form input:first-of-type {
+  border-radius: 6px 6px 0 0;
+  border-bottom-style: none;
+}
+
+.login-form input:last-of-type {
+  border-radius: 0 0 6px 6px;
+}
+
+.login-form > button {
+  margin-top: 22px;
+  padding: 14px 0;
+
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+
+  background-color: #ff8c38;
+  border: none;
+  border-radius: 5px;
+}
+.login-form > button:disabled {
+  opacity: 0.5;
+}
+
+.create-account {
+  margin-bottom: 48px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #161616;
+}
+
+.create-account > a {
+  font-weight: 700;
+  color: #ff8c38;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

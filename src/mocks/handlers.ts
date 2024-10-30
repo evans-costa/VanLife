@@ -1,4 +1,5 @@
-import { http, HttpResponse } from "msw";
+import { delay, http, HttpResponse } from "msw";
+import { LoginApiRequest, LoginApiResponse } from "../types/api-responses";
 
 const vans = [
   {
@@ -69,28 +70,63 @@ const vans = [
   },
 ];
 
+const user = [{ id: "123", email: "b@b.com", password: "p123", name: "Bob" }];
+
 export const handlers = [
-  http.get("/api/vans", () => {
-    return HttpResponse.json({ vans });
+  http.get("/api/vans", async () => {
+    // return new HttpResponse("Error while fetching vans", { status: 404 });
+    await delay();
+    return HttpResponse.json({ vans }, { status: 200 });
   }),
-  http.get("/api/vans/:id", ({ params }) => {
+  http.get("/api/vans/:id", async ({ params }) => {
     const { id } = params;
 
     const van = vans.filter((van) => van.id === id);
 
-    return HttpResponse.json(van[0]);
+    await delay();
+    return HttpResponse.json(van[0], { status: 200 });
   }),
-  http.get("/api/host/vans", () => {
+  http.get("/api/host/vans", async () => {
     const hostVans = vans.filter((host) => host.hostId === "123");
-
+    await delay();
     return HttpResponse.json({ vans: hostVans });
   }),
-  http.get("/api/host/vans/:id", ({ params }) => {
+  http.get("/api/host/vans/:id", async ({ params }) => {
     const { id } = params;
 
     const hostVan = vans.filter((host) => host.hostId === "123");
     const van = hostVan.filter((van) => van.id === id);
 
+    // return new HttpResponse("Error while fetching vans", { status: 404 });
+    await delay();
     return HttpResponse.json(van[0]);
   }),
+
+  http.post<Record<string, never>, LoginApiRequest, LoginApiResponse>(
+    "/api/login",
+    async ({ request }) => {
+      const { email, password } = await request.json();
+
+      const findUser = user.find(
+        (user) => user.email === email && user.password === password,
+      );
+
+      await delay();
+
+      if (findUser) {
+        return HttpResponse.json(
+          {
+            message: "Login successful",
+            user: { ...findUser, password: undefined },
+          },
+          { status: 200 },
+        );
+      } else {
+        return HttpResponse.json(
+          { message: "Invalid credentials" },
+          { status: 401 },
+        );
+      }
+    },
+  ),
 ];
