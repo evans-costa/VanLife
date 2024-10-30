@@ -6,24 +6,33 @@ import CardVan from "../../components/CardVan/CardVan";
 
 export default function Vans() {
   const [searchParams, setSearchParams] = useSearchParams();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
   const [vans, setVans] = useState<Van[]>([]);
 
   const typeFilter = searchParams.get("type");
 
   useEffect(() => {
     async function fetchVans() {
-      const response = await fetch("/api/vans");
+      setLoading(true);
 
-      if (!response.ok) {
-        throw new Error("Error while fetching vans");
+      try {
+        const response = await fetch("/api/vans");
+
+        if (!response.ok) {
+          throw new Error("Error while fetching vans");
+        }
+
+        const data = (await response.json()) as VansApiResponse;
+        setVans(data.vans);
+      } catch (error) {
+        setError((error as Error).message);
+      } finally {
+        setLoading(false);
       }
-
-      const data = (await response.json()) as VansApiResponse;
-
-      setVans(data.vans);
     }
 
-    fetchVans().catch(console.error);
+    void fetchVans();
   }, []);
 
   const displayedVans = typeFilter
@@ -40,6 +49,7 @@ export default function Vans() {
         imgUrl={van.imageUrl}
         name={van.name}
         price={van.price}
+        description={van.description}
         type={van.type}
       />
     </Link>
@@ -60,6 +70,14 @@ export default function Vans() {
     });
 
     return null;
+  }
+
+  if (loading) {
+    return <h1 aria-live="polite">Loading...</h1>;
+  }
+
+  if (error) {
+    return <h1 aria-live="assertive">{error}</h1>;
   }
 
   return (

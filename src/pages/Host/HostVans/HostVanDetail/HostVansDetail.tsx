@@ -38,23 +38,41 @@ export default function HostVansDetail() {
   ));
 
   const [van, setVan] = useState<Van | null>(null);
+  const [error, setError] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
   const { id } = useParams();
 
   useEffect(() => {
     async function fetchVan() {
-      const response = await fetch(`/api/host/vans/${id}`);
+      setLoading(true);
 
-      if (!response.ok) {
-        throw new Error("Error while fetch van");
+      try {
+        const response = await fetch(`/api/host/vans/${id}`);
+
+        if (!response.ok) {
+          throw new Error("Error while fetch van");
+        }
+
+        const data = (await response.json()) as Van;
+
+        setVan(data);
+      } catch (error) {
+        setError((error as Error).message);
+      } finally {
+        setLoading(false);
       }
-
-      const data = (await response.json()) as Van;
-
-      setVan(data);
     }
 
-    fetchVan().catch(console.error);
+    void fetchVan();
   }, [id]);
+
+  if (loading) {
+    return <h1 aria-live="polite">Loading...</h1>;
+  }
+
+  if (error) {
+    return <h1 aria-live="assertive">{error}</h1>;
+  }
 
   return (
     <section>

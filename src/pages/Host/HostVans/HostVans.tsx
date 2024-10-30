@@ -5,34 +5,47 @@ import HostCardVan from "../../../components/HostCardVan/HostCardVan";
 
 export default function VansHost() {
   const [hostVans, setHostVans] = useState<Van[]>([]);
+  const [error, setError] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     async function fetchHostVans() {
-      const response = await fetch("/api/host/vans");
+      setLoading(true);
 
-      if (!response.ok) {
-        throw new Error("Error while fetching host vans.");
+      try {
+        const response = await fetch("/api/host/vans");
+
+        if (!response.ok) {
+          throw new Error("Error while fetching host vans.");
+        }
+
+        const data = (await response.json()) as VansApiResponse;
+        setHostVans(data.vans);
+      } catch (error) {
+        setError((error as Error).message);
+      } finally {
+        setLoading(false);
       }
-
-      const data = (await response.json()) as VansApiResponse;
-
-      setHostVans(data.vans);
     }
 
-    fetchHostVans().catch(console.error);
+    void fetchHostVans();
   }, []);
+
+  if (loading) {
+    return <h1 aria-live="polite">Loading...</h1>;
+  }
+
+  if (error) {
+    return <h1 aria-live="assertive">{error}</h1>;
+  }
 
   return (
     <section className="host-vans-container">
       <h1 className="host-vans-title">Your listed vans</h1>
       <div className="host-vans-list">
-        {hostVans.length > 0 ? (
-          hostVans.map((hostVan) => (
-            <HostCardVan key={hostVan.id} {...hostVan} />
-          ))
-        ) : (
-          <p>Loading...</p>
-        )}
+        {hostVans.map((hostVan) => (
+          <HostCardVan key={hostVan.id} {...hostVan} />
+        ))}
       </div>
     </section>
   );
