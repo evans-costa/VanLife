@@ -5,13 +5,20 @@ interface IProps {
   imgUrl: string;
   name: string;
   price: number;
+  description: string;
   type: string;
 }
 
-export default function CardVan({ imgUrl, name, price, type }: IProps) {
+export default function CardVan({
+  imgUrl,
+  name,
+  price,
+  description,
+  type,
+}: IProps) {
   return (
     <div className="van-card">
-      <img src={imgUrl} alt={`A ${name} van`} className="van-card-image" />
+      <img src={imgUrl} alt={description} className="van-card-image" />
       <div className="van-card-content">
         <div className="van-card-info">
           <h3 className="van-card-title">{name}</h3>
