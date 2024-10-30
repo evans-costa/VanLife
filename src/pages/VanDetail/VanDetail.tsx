@@ -4,7 +4,6 @@ import { Van } from "../../types/api-responses";
 import "./VanDetail.css";
 import { ArrowLeft } from "../../ui/ArrowLeft";
 import Tag from "../../ui/Tag/Tag";
-
 export default function VanDetail() {
   const { id } = useParams();
   const location = useLocation();
