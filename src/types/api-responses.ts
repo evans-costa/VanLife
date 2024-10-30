@@ -10,3 +10,18 @@ export interface Van {
   imageUrl: string;
   type: string;
 }
+
+export interface LoginApiResponse {
+  message: string;
+  user?: {
+    id: string;
+    email: string;
+    name: string;
+    password: undefined;
+  };
+}
+
+export interface LoginApiRequest {
+  email: string;
+  password: string;
+}
