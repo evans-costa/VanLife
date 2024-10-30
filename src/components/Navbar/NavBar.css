@@ -1,5 +1,6 @@
 .nav-bar {
   display: flex;
+  align-items: center;
   gap: 30px;
   font-size: 16px;
 
@@ -16,6 +17,10 @@ nav > a {
   text-decoration: none;
   text-transform: capitalize;
   color: #4d4d4d;
+}
+
+a > svg {
+  vertical-align: middle;
 }
 
 nav > a:hover,
